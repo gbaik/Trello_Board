@@ -3,8 +3,9 @@ var SRC_DIR = path.join(__dirname, '/src');
 var DIST_DIR = path.join(__dirname, '/dist');
 
 module.exports = {
+  devtool: 'inline-source-map',
   entry: {
-    bundle: `${SRC_DIR}/index.jsx`
+    bundle: `${SRC_DIR}/index.js`
   },
   output: {
     filename: '[name].js',

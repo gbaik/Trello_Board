@@ -1,7 +1,11 @@
 import { combineReducers } from "redux"
 
 /* import INSERT_REDUCER from "./REDUCER_FILE_NAME" */
+import HelloWorld from './HelloWorld/reducer.js'
 
-export default combineReducers({
+const reducers = combineReducers({
   /* INSERT_REDUCER */
+  HelloWorld
 })
+
+export default reducers;
