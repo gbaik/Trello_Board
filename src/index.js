@@ -3,16 +3,17 @@ import ReactDOM from "react-dom";
 import { createStore } from "redux"
 import { Provider } from "react-redux"
 
-import reducers from "./stores/reducers.js"
+// import reducers from "./stores/reducers.js"
 import middleware from './stores/middleware';
 
-import HelloWorld from "./containers/HelloWorld.js";
+import Board from "./containers/Board.js";
+import Column from './stores/Column/reducer.js'
 
-const store = createStore(reducers, middleware);
+const store = createStore(Column, middleware);
 
 const App = () => (
   <Provider store={store}> 
-    <HelloWorld />
+    <Board />
   </Provider>
 )
 
