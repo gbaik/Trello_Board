@@ -1,11 +1,11 @@
 import { combineReducers } from "redux"
+import { reducer as formReducer } from 'redux-form';
 
-/* import INSERT_REDUCER from "./REDUCER_FILE_NAME" */
-import HelloWorld from './Column/reducer.js'
+import Column from './Column/reducer.js'
 
 const reducers = combineReducers({
-  /* INSERT_REDUCER */
-  Column:
+  form: formReducer,
+  Column
 });
 
 export default reducers;

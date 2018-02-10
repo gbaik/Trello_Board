@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
 
 import Card from '../components/Card.js';
 
@@ -9,32 +10,20 @@ class Column extends Component {
   constructor(props) { 
     super(props);
 
-    this.state = {
-      data: ['']
-    }
-
     this.handleAddingCard = this.handleAddingCard.bind(this);
   }
 
   handleAddingCard() {  
-    // const { dispatch } = this.props;
-
-    // cardActions.ADD_NEW_CARD(dispatch);
-  
-    const { data } = this.state;
-
-    this.setState({
-      data: [...data, 'Blank']
-    })  
+    cardActions.ADD_NEW_CARD();
   }
   
   render() {
-    const { title } = this.props;
+    const { title, cardData } = this.props;
 
     return (
       <div>
         <h1>{title}</h1>
-        {this.state.data.map((data, id) => (
+        {cardData.map((data, id) => (
           <Card data={data} key={id}/>
         ))}
         <button onClick={this.handleAddingCard}>+ Add a card</button>
@@ -43,4 +32,6 @@ class Column extends Component {
   };
 }
 
-export default Column;
+const mapStateToProps = (state) =>({cardData: state.Column.cardData});
+
+export default connect(mapStateToProps)(Column);

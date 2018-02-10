@@ -5,7 +5,7 @@ import promise from "redux-promise-middleware"
 
 const middleware = applyMiddleware(
   thunk,
-  promise(), 
+  promise, 
   logger
 );
 
