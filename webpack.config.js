@@ -18,7 +18,7 @@ module.exports = {
         include: SRC_DIR,
         test: /\.jsx?/,
         query: {
-          presets: ['react', 'es2015']
+          presets: ['react', 'es2015', 'stage-3']
         }
       }
     ]

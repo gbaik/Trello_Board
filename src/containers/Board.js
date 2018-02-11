@@ -7,7 +7,7 @@ const Board = ({title}) => (
   <div className="board">
     <div className="ui grid center aligned">
       {title.map((title, id) => (
-        <Column title={ title } key={ id }/>
+        <Column title={ title } key={ id } id={id}/>
       ))}
     </div>
   </div>

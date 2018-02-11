@@ -35,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/gbaik/Basic-React-Boilerplate/issues"
   },
-  "homepage": "https://github.com/gbaik/Basic-React-Boilerplate#readme"
+  "homepage": "https://github.com/gbaik/Basic-React-Boilerplate#readme",
+  "devDependencies": {
+    "babel-preset-stage-3": "^6.24.1"
+  }
 }
