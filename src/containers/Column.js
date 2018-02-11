@@ -5,13 +5,13 @@ import Card from '../components/Card.js';
 
 import { addNewCard } from '../stores/Column/actions';
 
-const Column = ({ title, id, cardData, handleAddingCard }) => (
-  <div className="four wide column">
+const Column = ({ title, columnId, cardData, handleAddingCard }) => (
+  <div className = "four wide column">
     <h1>{ title }</h1>
-      {cardData[id].map((data, id) => (
-        <Card data={ data } key={ id }/>
+      {cardData[columnId].map((data, id) => (
+        <Card data = { data } key = { id } columnId = { columnId } cardId = { id }/>
       ))}
-    <button onClick={ () => handleAddingCard(id) }>+ Add a card</button>
+    <button onClick = { () => handleAddingCard(columnId) }>+ Add a card</button>
   </div>
 );
 
@@ -19,8 +19,8 @@ const mapStateToProps = (state) => ({ cardData: state.column.cardData });
 
 const mapDispatchToProps = (dispatch) => (
   {
-    handleAddingCard: (id) => {
-      dispatch(addNewCard(id))
+    handleAddingCard: (columnId) => {
+      dispatch(addNewCard(columnId))
     }
   }
 )

@@ -1,6 +1,6 @@
-export const addNewCard = (id) => (
+export const addNewCard = (columnId) => (
   {
     type: 'ADD_NEW_CARD',
-    payload: id
+    payload: columnId
   }
 )
