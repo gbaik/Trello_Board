@@ -1,18 +1,18 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
 import Column from "./Column.js";
 
-const Board = ({}) => (
+const Board = ({title}) => (
   <div className="board">
     <div className="ui grid center aligned">
-      <div className="four wide column"><Column title={'Title 1'}/></div>
-      <div className="four wide column"><Column title={'Title 2'}/></div>
-      <div className="four wide column"><Column title={'Title 3'}/></div>
-      <div className="four wide column"><Column title={'Title 4'}/></div>
+      {title.map((title, id) => (
+        <Column title={ title } key={ id }/>
+      ))}
     </div>
   </div>
 )
 
+const mapStateToProps = (state) => ({ title: state.board.title });
 
-
-
-export default Board;
+export default connect(mapStateToProps)(Board);

@@ -6,11 +6,11 @@ import Card from '../components/Card.js';
 import { addNewCard } from '../stores/Column/actions';
 
 const Column = ({ title, cardData, handleAddingCard }) => (
-  <div>
+  <div className="four wide column">
     <h1>{ title }</h1>
-    {cardData.map((data, id) => (
-      <Card data={ data } key={ id }/>
-    ))}
+      {cardData.map((data, id) => (
+        <Card data={ data } key={ id }/>
+      ))}
     <button onClick={ handleAddingCard }>+ Add a card</button>
   </div>
 );
