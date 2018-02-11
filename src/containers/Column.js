@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Card from '../components/Card.js';
 
 import { addNewCard } from '../stores/Column/actions';
-import { editCardData } from '../stores/Card/actions';
+import { editCardData } from '../stores/Column/actions';
 
 const Column = ({ title, columnId, cardData, handleAddingCard, handleEditCardData }) => (
   <div className = "four wide column">

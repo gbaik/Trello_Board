@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
-
 const RenderField = (field) => {
   const { meta: { touched, error, warning }} = field; 
 

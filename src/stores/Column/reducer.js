@@ -17,6 +17,9 @@ const column = (state = initialState, action) => {
           [action.payload]: [...state.cardData[action.payload], 'blank']
         }
       }
+    case 'EDIT_CARD':
+      console.log('hit', action.payload);
+      return state;
     default:
       return state;
   }
