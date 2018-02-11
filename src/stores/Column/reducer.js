@@ -1,15 +1,16 @@
-import { ADD_NEW_CARD } from './actions';
-
 const initialState= {
-  cardData: ['test1']
+  cardData: []
 }
 
-export default function reduce(state = initialState, action) {
+const column = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_NEW_CARD:
-      console.log('hit');
-      return action.payload.data
+    case 'ADD_NEW_CARD':
+      return Object.assign({}, state, {
+        cardData: [...state.cardData, 'blank']
+      })
     default:
       return state;
   }
 }
+
+export default column;
