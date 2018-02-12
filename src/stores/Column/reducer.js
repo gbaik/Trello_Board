@@ -1,7 +1,7 @@
 const initialState = {
   cardData: [
     [
-      ['card1', false],
+      ['card1', true],
       ['card2', false]      
     ],
     [
@@ -34,8 +34,28 @@ const column = (state = initialState, action) => {
           ]
         }
       }
+    case 'TRIGGER_CARD_EDIT':
+      const { columnId, cardId } = action.payload;
+      
+      let updatedCardData = state.cardData[columnId].map((data, index) => {
+        if (index !== cardId) {
+          return data;
+        } 
+    
+        return [
+          data[0],
+          !data[1]
+        ]
+      })
+
+      return {
+        ...state,
+        cardData: {
+          ...state.cardData,
+          [columnId]: updatedCardData
+        }
+      }
     case 'EDIT_CARD':
-      console.log('hit', action.payload);
       return state;
     default:
       return state;

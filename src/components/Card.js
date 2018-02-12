@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
+import { triggerCardEdit } from '../stores/Column/actions';
+
+
 const RenderField = (field) => {
   const { meta: { touched, error, warning }} = field; 
 
@@ -21,14 +24,14 @@ class Card extends Component {
   }
 
   render() {  
-    const { text, handleSubmit }= this.props;
-
+    const { text, columnId, cardId, handleSubmit, triggerCardEdit } = this.props;
+    
     return (
       <div>
         { !this.state.editCardData && 
           <div>
             { text } 
-            <button>Edit</button>
+            <button onClick={ () => triggerCardEdit(columnId, cardId) }>Edit</button>
           </div>
         }
         { this.state.editCardData && 
@@ -43,6 +46,16 @@ class Card extends Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => (
+  {
+    triggerCardEdit: (columnId, cardId) => (
+      dispatch(triggerCardEdit(columnId, cardId))
+    )
+  }
+)
+
+Card = connect(null, mapDispatchToProps)(Card);
 
 export default reduxForm({
   form: 'Card'

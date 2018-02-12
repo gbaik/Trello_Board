@@ -3,18 +3,14 @@ import {connect} from 'react-redux';
 
 import Card from '../components/Card.js';
 
-import { addNewCard } from '../stores/Column/actions';
-import { editCardData } from '../stores/Column/actions';
+import { addNewCard, editCard } from '../stores/Column/actions';
 
-const Column = ({ title, columnId, cardData, handleAddingCard, handleEditCardData }) => (
+const Column = ({ title, columnId, cardData, handleAddingCard, handleEditCard }) => (
   <div className = "four wide column">
     <h1>{ title }</h1>
-      {cardData[columnId].map((data, id) => {
-        let text = data[0];
-        let editCard = data[1];
-        
-        return <Card text = { text } key = { id } onSubmit={ () => handleEditCardData(columnId, id) }/>
-      })}
+      {cardData[columnId].map((data, id) => (
+        <Card text = { data[0] } columnId = { columnId } cardId = { id } onSubmit={ () => handleEditCard(columnId, id) } key = { id }/>
+      ))}
     <button onClick = { () => handleAddingCard(columnId) }>+ Add a card</button>
   </div>
 );
@@ -26,8 +22,10 @@ const mapDispatchToProps = (dispatch) => (
     handleAddingCard: (columnId) => {
       dispatch(addNewCard(columnId))
     },
-    handleEditCardData: (columnId, cardId) => {
-      dispatch(editCardData(columnId, cardId));
+    handleEditCard: (columnId, cardId) => {
+      console.log('in dispatch');
+
+      return dispatch(editCard(columnId, cardId))
     }
   }
 )
