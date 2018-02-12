@@ -33,7 +33,7 @@ class Card extends Component {
         { editCardData && 
           <div>
             <form onSubmit={ handleSubmit }>
-              <Field name="cardData" component={ RenderField } />  
+              <Field name="updatedText" component={ RenderField } />  
               <button type='submit'>Save</button>
             </form>
           </div>
