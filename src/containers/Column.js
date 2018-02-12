@@ -9,7 +9,7 @@ const Column = ({ title, columnId, cardData, handleAddingCard, handleEditCard })
   <div className = "four wide column">
     <h1>{ title }</h1>
       {cardData[columnId].map((data, id) => (
-        <Card text = { data[0] } columnId = { columnId } cardId = { id } onSubmit={ () => handleEditCard(columnId, id) } key = { id }/>
+        <Card text = { data[0] } editCardData = { data[1] }columnId = { columnId } cardId = { id } onSubmit={ () => handleEditCard(columnId, id) } key = { id }/>
       ))}
     <button onClick = { () => handleAddingCard(columnId) }>+ Add a card</button>
   </div>
@@ -22,11 +22,9 @@ const mapDispatchToProps = (dispatch) => (
     handleAddingCard: (columnId) => {
       dispatch(addNewCard(columnId))
     },
-    handleEditCard: (columnId, cardId) => {
-      console.log('in dispatch');
-
-      return dispatch(editCard(columnId, cardId))
-    }
+    handleEditCard: (columnId, cardId) => (
+      dispatch(editCard(columnId, cardId, 'hello world'))
+    )
   }
 )
 

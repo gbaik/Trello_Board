@@ -1,7 +1,7 @@
 const initialState = {
   cardData: [
     [
-      ['card1', true],
+      ['card1', false],
       ['card2', false]      
     ],
     [
@@ -18,7 +18,6 @@ const initialState = {
 
 /*
   3. Make edit button possible with hard code data (EDIT_CARD reducer)
-  4. Make edit button dynamic
   5. When clicking on Save, change the value of editCard to false, and when edit is clicked change it to true
 */
 const column = (state = initialState, action) => {
@@ -34,16 +33,18 @@ const column = (state = initialState, action) => {
           ]
         }
       }
-    case 'TRIGGER_CARD_EDIT':
-      const { columnId, cardId } = action.payload;
+    case 'EDIT_CARD':
+      const { columnId, cardId, updatedText } = action.payload;
       
       let updatedCardData = state.cardData[columnId].map((data, index) => {
         if (index !== cardId) {
           return data;
         } 
     
+        let text = updatedText || data[0];
+
         return [
-          data[0],
+          text,
           !data[1]
         ]
       })
@@ -55,8 +56,6 @@ const column = (state = initialState, action) => {
           [columnId]: updatedCardData
         }
       }
-    case 'EDIT_CARD':
-      return state;
     default:
       return state;
   }

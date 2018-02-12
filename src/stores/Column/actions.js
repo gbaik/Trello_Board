@@ -5,22 +5,13 @@ export const addNewCard = (columnId) => (
   }
 )
 
-export const triggerCardEdit = (columnId, cardId) => (
-  {
-    type: 'TRIGGER_CARD_EDIT',
-    payload: {
-      columnId: columnId,
-      cardId: cardId
-    }
-  }
-)
-
-export const editCard = (columnId, cardId) => (
+export const editCard = (columnId, cardId, updatedText) => (
   {
     type: 'EDIT_CARD',
     payload: {
       columnId: columnId,
-      cardId: cardId
+      cardId: cardId,
+      updatedText: updatedText
     }
   }
 )

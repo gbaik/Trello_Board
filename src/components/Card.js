@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
-import { triggerCardEdit } from '../stores/Column/actions';
+import { editCard } from '../stores/Column/actions';
 
 
 const RenderField = (field) => {
@@ -17,24 +17,20 @@ const RenderField = (field) => {
 class Card extends Component { 
   constructor(props) { 
     super(props);
-    
-    this.state = {
-      editCardData: false
-    }
   }
 
   render() {  
-    const { text, columnId, cardId, handleSubmit, triggerCardEdit } = this.props;
-    
+    const { text, columnId, cardId, editCardData, handleSubmit, triggerCardEdit } = this.props;
+
     return (
       <div>
-        { !this.state.editCardData && 
+        { !editCardData && 
           <div>
             { text } 
             <button onClick={ () => triggerCardEdit(columnId, cardId) }>Edit</button>
           </div>
         }
-        { this.state.editCardData && 
+        { editCardData && 
           <div>
             <form onSubmit={ handleSubmit }>
               <Field name="cardData" component={ RenderField } />  
@@ -50,7 +46,7 @@ class Card extends Component {
 const mapDispatchToProps = (dispatch) => (
   {
     triggerCardEdit: (columnId, cardId) => (
-      dispatch(triggerCardEdit(columnId, cardId))
+      dispatch(editCard(columnId, cardId))
     )
   }
 )
