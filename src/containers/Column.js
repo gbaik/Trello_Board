@@ -9,9 +9,12 @@ import { editCardData } from '../stores/Column/actions';
 const Column = ({ title, columnId, cardData, handleAddingCard, handleEditCardData }) => (
   <div className = "four wide column">
     <h1>{ title }</h1>
-      {cardData[columnId].map((data, id) => (
-        <Card data = { data } key = { id } onSubmit={ () => handleEditCardData(columnId, id) }/>
-      ))}
+      {cardData[columnId].map((data, id) => {
+        let text = data[0];
+        let editCard = data[1];
+        
+        return <Card text = { text } key = { id } onSubmit={ () => handleEditCardData(columnId, id) }/>
+      })}
     <button onClick = { () => handleAddingCard(columnId) }>+ Add a card</button>
   </div>
 );

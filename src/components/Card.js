@@ -16,18 +16,18 @@ class Card extends Component {
     super(props);
     
     this.state = {
-      editCardData: true
+      editCardData: false
     }
   }
 
   render() {  
-    const { data, handleSubmit }= this.props;
+    const { text, handleSubmit }= this.props;
 
     return (
       <div>
         { !this.state.editCardData && 
           <div>
-            data 
+            { text } 
             <button>Edit</button>
           </div>
         }
