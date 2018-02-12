@@ -5,7 +5,6 @@ import { Field, reduxForm } from 'redux-form';
 
 import { editCard } from '../stores/Column/actions';
 
-
 const RenderField = (field) => {
   const { meta: { touched, error, warning }} = field; 
 

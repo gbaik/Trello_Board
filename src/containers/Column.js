@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import Card from '../components/Card.js';
+import Card from './Card.js';
 
 import { addNewCard, editCard } from '../stores/Column/actions';
 
@@ -29,10 +29,9 @@ const mapDispatchToProps = (dispatch) => (
     handleAddingCard: (columnId) => {
       dispatch(addNewCard(columnId))
     },
-    handleEditCard: (columnId, cardId, updatedText) => {
-      console.log('updatedText: ', updatedText);
+    handleEditCard: (columnId, cardId, updatedText) => (
       dispatch(editCard(columnId, cardId, updatedText))
-    }
+    )
   }
 )
 
