@@ -24,13 +24,15 @@ class Card extends Component {
     return (
       <div>
         <button onClick={ () => handleDeletingCard(columnId, cardId)}>X</button>                
-        { !editCardData && 
+        { 
+          !editCardData && 
           <div>
             { text } 
             <button onClick={ () => triggerCardEdit(columnId, cardId) }>Edit</button>
           </div>
         }
-        { editCardData && 
+        { 
+          editCardData && 
           <div>
             <form onSubmit={ handleSubmit }>
               <Field name="updatedText" component={ RenderField } />  
@@ -38,8 +40,15 @@ class Card extends Component {
             </form>
           </div>
         }
-        <button onClick={ () => handleMovingCard()}>Left</button>        
-        <button onClick={ () => handleMovingCard()}>Right</button>
+        {console.log(columnId - 1)}
+        {
+          columnId - 1 >= 0 &&
+          <button onClick={ () => handleMovingCard(columnId, cardId, -1)}>Left</button>
+        }
+        {
+          columnId + 1 < 4 &&
+          <button onClick={ () => handleMovingCard(columnId, cardId, 1)}>Right</button>
+        }   
       </div>
     );
   }
@@ -53,9 +62,10 @@ const mapDispatchToProps = (dispatch) => (
     handleDeletingCard: (columnId, cardId) => (
       dispatch(deleteCard(columnId, cardId))
     ),
-    handleMovingCard: () => (
-      dispatch(moveCard())
-    )
+    handleMovingCard: (columnId, cardId, direction) => {
+      dispatch(moveCard(columnId, cardId, direction))
+      dispatch(deleteCard(columnId, cardId))
+    }
   }
 )
 

@@ -66,10 +66,24 @@ const column = (state = initialState, action) => {
           [columnId]: updatedColumn
         }
       }
-      return state;
     }
     case 'MOVE_CARD': {
-      return state
+      let { columnId, cardId, direction } = action.payload;
+  
+      let cardData = state.cardData[columnId][cardId];
+
+      columnId += direction;
+
+      let updatedCard = state.cardData[columnId].slice();
+      updatedCard.splice(cardId, 0, cardData);
+
+      return {
+        ...state,
+        cardData: {
+          ...state.cardData,
+          [columnId]: updatedCard
+        }
+      }
     }
     default: {
       return state;

@@ -20,13 +20,19 @@ export const deleteCard = (columnId, cardId) => (
   {
     type: 'DELETE_CARD',
     payload: {
-      columnId, cardId 
+      columnId: columnId,
+      cardId: cardId
     }
   }
 )
 
-export const moveCard = () => (
+export const moveCard = (columnId, cardId, direction) => (
   {
-    type: 'MOVE_CARD'
+    type: 'MOVE_CARD',
+    payload: {
+      columnId: columnId,
+      cardId: cardId,
+      direction: direction
+    }
   }
 )
