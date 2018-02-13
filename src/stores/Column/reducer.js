@@ -18,7 +18,7 @@ const initialState = {
 
 const column = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_NEW_CARD':
+    case 'ADD_NEW_CARD': {
       return {
         ...state,
         cardData: {
@@ -29,7 +29,8 @@ const column = (state = initialState, action) => {
           ]
         }
       }
-    case 'EDIT_CARD':
+    }
+    case 'EDIT_CARD': {
       const { columnId, cardId, updatedText } = action.payload;
       
       let updatedCardData = state.cardData[columnId].map((data, index) => {
@@ -52,17 +53,27 @@ const column = (state = initialState, action) => {
           [columnId]: updatedCardData
         }
       }
-    case 'MOVE_CARD':
-      console.log('hit');
-      let newArray = state.cardData.slice();
-      newArray.splice(action.index, 0, action.item);
+    }
+    case 'DELETE_CARD': {
+      const { columnId, cardId } = action.payload;
 
-      console.log(newArray);
-      return state
+      let updatedColumn = state.cardData[columnId].filter((data, index) => (index !== cardId));
 
-      return newArray
-    default:
+      return {
+        ...state,
+        cardData: {
+          ...state.cardData,
+          [columnId]: updatedColumn
+        }
+      }
       return state;
+    }
+    case 'MOVE_CARD': {
+      return state
+    }
+    default: {
+      return state;
+    }
   }
 }
 

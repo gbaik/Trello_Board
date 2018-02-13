@@ -16,6 +16,15 @@ export const editCard = (columnId, cardId, updatedText) => (
   }
 )
 
+export const deleteCard = (columnId, cardId) => (
+  {
+    type: 'DELETE_CARD',
+    payload: {
+      columnId, cardId 
+    }
+  }
+)
+
 export const moveCard = () => (
   {
     type: 'MOVE_CARD'
