@@ -19,7 +19,7 @@ class Card extends Component {
   }
 
   render() {  
-    const { text, columnId, cardId, editCardData, handleSubmit, triggerCardEdit, handleDeletingCard, handleMovingCard } = this.props;
+    const { text, columnId, cardId, editCardData, handleSubmit, title, triggerCardEdit, handleDeletingCard, handleMovingCard } = this.props;
     
     return (
       <div>
@@ -40,19 +40,20 @@ class Card extends Component {
             </form>
           </div>
         }
-        {console.log(columnId - 1)}
         {
           columnId - 1 >= 0 &&
           <button onClick={ () => handleMovingCard(columnId, cardId, -1)}>Left</button>
         }
         {
-          columnId + 1 < 4 &&
+          columnId + 1 < title.length &&
           <button onClick={ () => handleMovingCard(columnId, cardId, 1)}>Right</button>
         }   
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({ title: state.board.title });
 
 const mapDispatchToProps = (dispatch) => (
   {
@@ -69,7 +70,7 @@ const mapDispatchToProps = (dispatch) => (
   }
 )
 
-Card = connect(null, mapDispatchToProps)(Card);
+Card = connect(mapStateToProps, mapDispatchToProps)(Card);
 
 export default reduxForm({
   form: 'Card'
