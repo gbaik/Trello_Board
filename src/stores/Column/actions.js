@@ -15,3 +15,9 @@ export const editCard = (columnId, cardId, updatedText) => (
     }
   }
 )
+
+export const moveCard = () => (
+  {
+    type: 'MOVE_CARD'
+  }
+)

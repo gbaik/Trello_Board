@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
-import { editCard } from '../stores/Column/actions';
+import { editCard, moveCard } from '../stores/Column/actions';
 
 const RenderField = (field) => {
   const { meta: { touched, error, warning }} = field; 
@@ -19,8 +19,8 @@ class Card extends Component {
   }
 
   render() {  
-    const { text, columnId, cardId, editCardData, handleSubmit, triggerCardEdit } = this.props;
-
+    const { text, columnId, cardId, editCardData, handleSubmit, triggerCardEdit, handleMovingCard } = this.props;
+    
     return (
       <div>
         { !editCardData && 
@@ -37,6 +37,8 @@ class Card extends Component {
             </form>
           </div>
         }
+        <button onClick={ () => handleMovingCard()}>Left</button>        
+        <button onClick={ () => handleMovingCard()}>Right</button>
       </div>
     );
   }
@@ -46,6 +48,9 @@ const mapDispatchToProps = (dispatch) => (
   {
     triggerCardEdit: (columnId, cardId) => (
       dispatch(editCard(columnId, cardId))
+    ),
+    handleMovingCard: () => (
+      dispatch(moveCard())
     )
   }
 )

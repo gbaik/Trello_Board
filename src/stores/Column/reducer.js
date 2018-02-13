@@ -16,10 +16,6 @@ const initialState = {
   ]
 }
 
-/*
-  3. Make edit button possible with hard code data (EDIT_CARD reducer)
-  5. When clicking on Save, change the value of editCard to false, and when edit is clicked change it to true
-*/
 const column = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_NEW_CARD':
@@ -56,6 +52,15 @@ const column = (state = initialState, action) => {
           [columnId]: updatedCardData
         }
       }
+    case 'MOVE_CARD':
+      console.log('hit');
+      let newArray = state.cardData.slice();
+      newArray.splice(action.index, 0, action.item);
+
+      console.log(newArray);
+      return state
+
+      return newArray
     default:
       return state;
   }
