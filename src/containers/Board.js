@@ -4,12 +4,10 @@ import {connect} from 'react-redux';
 import Column from "./Column.js";
 
 const Board = ({title}) => (
-  <div className = "board">
-    <div className = "ui grid center aligned">
-      {title.map((title, id) => (
-        <Column title = { title } key = { id } columnId = {id}/>
-      ))}
-    </div>
+  <div>
+    {title.map((title, id) => (
+      <Column title = { title } key = { id } columnId = {id}/>
+    ))}
   </div>
 )
 

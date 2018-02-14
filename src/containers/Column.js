@@ -6,7 +6,7 @@ import Card from './Card.js';
 import { addNewCard, editCard } from '../stores/Column/actions';
 
 const Column = ({ title, columnId, cardData, handleAddingCard, handleEditCard }) => (
-  <div className = "four wide column">
+  <div>
     <h1>{ title }</h1>
       {cardData[columnId].map((data, id) => (
         <Card 
