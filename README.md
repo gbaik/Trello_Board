@@ -3,10 +3,11 @@
 Basic Trello Board Clone
 
 ## Getting Started
+npm install
 
 npm run build
 
-node run server
+npm run server
 
 ## Author
 
